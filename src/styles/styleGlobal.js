@@ -13,7 +13,7 @@ export const StyleGlobal = createGlobalStyle`
         font-family: 'Source Sans Pro', sans-serif;
         overflow: hidden;
         @media (max-width: 762px){
-            overflow: auto;
+            overflow-y: scroll;
         }
     }
 `
@@ -117,10 +117,7 @@ export const ButtonNotBd = styled.div`
         height: 15px;
         cursor: pointer;
     }
-    .delete{
-        color:${props => props.two === '2' ? 'hsl(358, 79%, 66%)' : props.color};
-        margin-right:10px;
-    }
+
     button{
         border:none;
         background:none;
@@ -129,6 +126,17 @@ export const ButtonNotBd = styled.div`
         color:${props => props.color};
         margin-left:2px;
         cursor: pointer;
+        transition: all .1s linear;
+    }
+    button:hover{
+        color:hsl(239, 57%, 85%);
+    }
+    .delete{
+        color:hsl(358, 79%, 66%);
+        margin-right:10px;
+    }
+    .delete:hover{
+        color:hsl(357, 100%, 86%);
     }
     @media (max-width: 762px){
         bottom:20px;
@@ -154,7 +162,11 @@ export const ButtonBd = styled.button`
     padding:0 20px;
     border:none;
     outline:none;
-    background:hsl(238, 40%, 52%);
+    transition: background .1s linear;
+    background:${props => props.color || 'hsl(238, 40%, 52%)'};
+    &:hover{
+        background:${props => !props.color && 'hsl(239, 57%, 85%)'}
+    }
     color:#fff;
     border-radius:5px;
     cursor: pointer;
@@ -209,5 +221,49 @@ export const UpdateComment = styled.div`
     }
     button{
         margin-top:10px;
+    }
+`
+export const ModalStyle = styled.div`
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background-color:rgba(0,0,0,.6);
+    display:grid;
+    place-content: center;
+`
+
+export const ModalContent = styled.div`
+    max-width:350px;
+    margin:0 30px;
+    display:block;
+    padding:30px;
+    background:#fff;
+    border-radius:10px;
+    h3{
+        font-size:30px;
+        margin:5px 0;
+    }
+    .buttons{
+        display:flex;
+        justify-content:center;
+        width:100%;
+    }
+    button{
+        font-size:17px;
+        font-weight: bold;
+        width: 180px;
+        padding:0 20px;
+        text-align: center;
+        border-radius:10px;
+    }
+    button:first-child{
+        margin-right: 15px;
+    }
+    @media (max-width: 450px){
+        button{
+            width:100px;
+        }
     }
 `

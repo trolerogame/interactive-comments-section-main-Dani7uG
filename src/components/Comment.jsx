@@ -4,7 +4,7 @@ import plus from '../../images/icon-plus.svg'
 import minus from '../../images/icon-minus.svg'
 import ButtonsCrud from './ButtonsCrud'
 import Input from './Input'
-const Comment = ({userProps,user:username,replice}) => {
+const Comment = ({userProps,user:username,replice,i,deleteComment}) => {
     const inputUpdate = useRef(null)
     const inputreply = useRef(null)
 
@@ -14,6 +14,8 @@ const Comment = ({userProps,user:username,replice}) => {
     const [like,setLike] = useState(false)
     const {score,user,createdAt,content} = userData
 
+    // elimina el comentario o replice, dependera de lo se le pase, y le pasamos como parametro la posicion en el array.
+    const deleteCommentReplice = () => deleteComment(i)
     // actualiza el score, n es para saber si sube o bajan los likes
     const updateScore = n => setUserData({...userData,score:score + n})
     // actualiza el comentario del nuestro usuario
@@ -21,6 +23,13 @@ const Comment = ({userProps,user:username,replice}) => {
         if(content){
             setUserData({...userData,content})
             setStateUpdate(false)
+        }
+    }
+    const reply = e => {
+        const content = inputreply.current.value
+        if(content){
+            replice(e,content,user.username)
+            setStateReply(false)
         }
     }
 
@@ -65,6 +74,8 @@ const Comment = ({userProps,user:username,replice}) => {
                         updateContent={updateContent}
                         stateUpdate={stateUpdate}
                         setStateUpdate={setStateUpdate}
+                        deleteCommentReplice={deleteCommentReplice}
+                        i={i}
                     />
                 </div>
             </div>
@@ -72,13 +83,7 @@ const Comment = ({userProps,user:username,replice}) => {
                 <Input 
                     input={inputreply} 
                     img={username.image.png} 
-                    newComment={e => {
-                        const content = inputreply.current.value
-                        if(content){
-                            replice(e,content,user.username)
-                            setStateReply(false)
-                        }
-                    }}
+                    newComment={reply}
                     userReply={user.username}
                     buttonText='REPLY'
                 />

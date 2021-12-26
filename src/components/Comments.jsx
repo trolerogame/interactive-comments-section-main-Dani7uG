@@ -1,14 +1,13 @@
 import React,{useState} from 'react'
 import Comment from './Comment'
 import {Replices} from '../styles/styleGlobal'
-const Comments = ({userProps,user,deleteComment}) => {
+const Comments = ({userProps,user,deleteComment,i}) => {
     const [replices,setReplices] = useState(userProps.replies)
 
     // elimina el comentario en replices
-    const deleteReplices = replice => {
-        const newDataReplices = replices.filter((elem,i) => i !== replice)
-        setReplices(newDataReplices)
-    }
+    const deleteReplices = replice => 
+        setReplices(replices.filter((elem,i) => i !== replice))
+    
     // crea el comentario haciendo la estructura, y lo guarda en el array
     const replice = (e,content,userReplices) => {
         e.preventDefault()
@@ -34,15 +33,17 @@ const Comments = ({userProps,user,deleteComment}) => {
                 userProps={userProps} 
                 user={user} 
                 replice={replice}
+                i={i}
             />
             <Replices>
-                {replices.map(elem => 
+                {replices.map((elem,i) => 
                     <Comment 
                         userProps={elem} 
                         key={elem.id + 4} 
                         user={user}
-                        deleteReplices={deleteReplices}
+                        deleteComment={deleteReplices}
                         replice={replice}
+                        i={i}
                     />
                 )}
             </Replices>

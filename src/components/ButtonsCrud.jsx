@@ -1,11 +1,13 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { ButtonNotBd } from '../styles/styleGlobal'
 import reply from '../../images/icon-reply.svg'
 import edit from '../../images/icon-edit.svg'
 import deletee from '../../images/icon-delete.svg'
-const ButtonsCrud = ({user,username,stateReply,setStateReply,stateUpdate,setStateUpdate}) => {
+import Modal from './Modal'
+const ButtonsCrud = ({user,username,stateReply,setStateReply,stateUpdate,setStateUpdate,deleteCommentReplice}) => {
+    const [del,setDelete] = useState(false)
     return (
-        <ButtonNotBd color='hsl(238, 40%, 52%)' two={user.username !== username ? '1' : '2'}>
+        <ButtonNotBd color='hsl(238, 40%, 52%)'>
             {user.username !== username ? 
                 <div>
                     <img src={reply}/>
@@ -17,7 +19,7 @@ const ButtonsCrud = ({user,username,stateReply,setStateReply,stateUpdate,setStat
                 <>
                     <div>
                         <img src={deletee} />
-                        <button className="delete">
+                        <button className="delete" onClick={() => setDelete(true)}>
                             Delete
                         </button>
                     </div> 
@@ -27,6 +29,7 @@ const ButtonsCrud = ({user,username,stateReply,setStateReply,stateUpdate,setStat
                             Update
                         </button>
                     </div>
+                    {del && <Modal setDelete={setDelete} deleteCommentReplice={deleteCommentReplice}/>}
                 </>
             }
         </ButtonNotBd>

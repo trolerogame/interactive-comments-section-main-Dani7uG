@@ -24,23 +24,24 @@ function App() {
         replies:[]
       }
       setDataArr([...dataArr,newCo])
+      input.current.value = ' '
     }
   }
   // elimina un comentario filtrandolo por index
-  const deleteComment = comment => {
-    const newDataArr = dataArr.filter((elem,i) => i !== comment)
-    setDataArr(newDataArr)
-  }
+  const deleteComment = comment => 
+    setDataArr(dataArr.filter((elem,i) => i !== comment))
+  
 
   return (
     <>
       <StyleGlobal/>
       <div>
         <ContainComments>
-          {dataArr.map((elem) => 
+          {dataArr.map((elem,i) => 
             <Comments 
               userProps={elem} 
               key={elem.id} 
+              i={i}
               user={data.currentUser}
               deleteComment={deleteComment}
             /> 

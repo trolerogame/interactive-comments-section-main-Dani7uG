@@ -3,5 +3,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()]
+  plugins: [react()],
+  base:'/interactive-comments-section-main-Dani7uG'
 })

@@ -1,11 +1,12 @@
 import React from 'react'
-
-const Input = () => {
+import { ButtonBd,Form } from '../styles/styleGlobal'
+const Input = ({input,img,newComment,buttonText,userReply}) => {
     return (
-        <form>
-          <input type="text" />
-          <button></button>  
-        </form>
+      <Form onSubmit={newComment} >
+        <img src={img} alt="" />
+        <textarea autoFocus ref={input} defaultValue={userReply ? `@${userReply}` : ''}/>
+        <ButtonBd>{buttonText || 'SEND'}</ButtonBd>  
+      </Form>
     )
 }
 

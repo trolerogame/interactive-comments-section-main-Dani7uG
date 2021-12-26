@@ -212,6 +212,7 @@ export const UpdateComment = styled.div`
     align-items: flex-end;
     margin-top:20px;
     textarea{
+        width: 300px;
         height:100px;
         border-radius:10px;
         outline:none;

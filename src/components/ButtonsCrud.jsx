@@ -1,8 +1,8 @@
 import React,{useState} from 'react'
 import { ButtonNotBd } from '../styles/styleGlobal'
-import reply from '../../images/icon-reply.svg'
-import edit from '../../images/icon-edit.svg'
-import deletee from '../../images/icon-delete.svg'
+import reply from '../../public/icon-reply.svg'
+import edit from '../../public/icon-edit.svg'
+import deletee from '../../public/icon-delete.svg'
 import Modal from './Modal'
 const ButtonsCrud = ({user,username,stateReply,setStateReply,stateUpdate,setStateUpdate,deleteCommentReplice}) => {
     const [del,setDelete] = useState(false)

@@ -1,7 +1,7 @@
 import React,{useState,useRef} from 'react'
 import { CommentContain,CountLikes,ButtonBd,UpdateComment } from '../styles/styleGlobal'
-import plus from '../../images/icon-plus.svg'
-import minus from '../../images/icon-minus.svg'
+import plus from '../../public/icon-plus.svg'
+import minus from '../../public/icon-minus.svg'
 import ButtonsCrud from './ButtonsCrud'
 import Input from './Input'
 const Comment = ({userProps,user:username,replice,i,deleteComment}) => {

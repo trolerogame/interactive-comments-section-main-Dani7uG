@@ -35,19 +35,17 @@ function App() {
   return (
     <>
       <StyleGlobal/>
-      <div>
-        <ContainComments>
-          {dataArr.map((elem,i) => 
-            <Comments 
-              userProps={elem} 
-              key={elem.id} 
-              i={i}
-              user={data.currentUser}
-              deleteComment={deleteComment}
-            /> 
-          )}
-        </ContainComments>
-      </div>
+      <ContainComments>
+        {dataArr.map((elem,i) => 
+          <Comments 
+            userProps={elem} 
+            key={elem.id} 
+            i={i}
+            user={data.currentUser}
+            deleteComment={deleteComment}
+          /> 
+        )}
+      </ContainComments>
       <Input input={input} img={data.currentUser.image.png} newComment={newComment}/>
     </>
   )

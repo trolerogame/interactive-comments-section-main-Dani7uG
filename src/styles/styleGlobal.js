@@ -21,7 +21,7 @@ export const StyleGlobal = createGlobalStyle`
 export const ContainComments = styled.div`
     overflow-y: auto;
     overflow-x: hidden;
-    height: 850px;
+    height: 780px;
     @media (max-width: 762px){
         overflow: hidden;
         height: auto;

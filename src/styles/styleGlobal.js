@@ -19,8 +19,9 @@ export const StyleGlobal = createGlobalStyle`
 `
 
 export const ContainComments = styled.div`
-    overflow: auto;
-    height: 900px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 850px;
     @media (max-width: 762px){
         overflow: hidden;
         height: auto;
@@ -30,9 +31,16 @@ export const ContainComments = styled.div`
 export const CommentContain = styled.div`
     position: relative;
     margin-bottom:15px;
-    padding:20px 40px 20px 20px;
+    padding:20px 40px 20px 0px;
     background: #fff;
     border-radius:5px;
+    form{
+        margin-top:10px;
+        border-top:10px solid hsl(228, 33%, 97%);
+        border-top-left-radius:0;
+        border-top-right-radius:0;
+        width:calc(100% + 20px);
+    }
     .containComment{
         display:flex;
     }
@@ -80,6 +88,7 @@ export const CountLikes = styled.div`
     width: 28px;
     border-radius: 30px;
     padding:0 5px;
+    margin-left:20px;
     span{
         font-size:18px;
         color:hsl(238, 40%, 52%);
